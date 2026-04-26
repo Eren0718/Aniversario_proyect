@@ -127,7 +127,7 @@ button {
   to { transform: translateY(-100vh); opacity: 0; }
 }
 /* 📱 MÓVIL */
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .scene {
     padding: 15px;
   }
@@ -139,7 +139,7 @@ button {
   .video-wall video {
     opacity: 0.5;
   }
-}
+} */
 
 /* 💻 TABLET */
 @media (max-width: 900px) {
@@ -158,8 +158,13 @@ button {
 /* MÓVIL */
 @media (max-width: 600px) {
   .video-wall {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    transform: scale(1.05);
+  }
+
+  .video-wall video {
+    object-fit: cover;
   }
 }
 </style>
