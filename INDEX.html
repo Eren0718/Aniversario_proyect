@@ -39,7 +39,32 @@ p {
   font-size: 1.2em;
   line-height: 1.6;
 }
+/* 📱 MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
 
+  .video-wall {
+    grid-template-columns: repeat(2, 1fr); /* 🔥 2 columnas en vez de 3 */
+    grid-template-rows: repeat(3, 1fr);    /* 🔥 3 filas */
+  }
+
+  .video-wall video {
+    opacity: 0.6;
+    filter: brightness(0.75);
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  p {
+    font-size: 1em;
+    padding: 0 10px;
+  }
+
+  button {
+    padding: 10px 18px;
+  }
+}
 /* BUTTON */
 button {
   margin-top: 20px;
