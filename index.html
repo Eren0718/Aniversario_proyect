@@ -54,7 +54,7 @@ button {
 }
 
 /* 🎥 VIDEO WALL */
-.video-wall {
+/* .video-wall {
   position: absolute;
   inset: 0;
   display: grid;
@@ -62,7 +62,16 @@ button {
   grid-template-rows: repeat(2, 1fr);
   overflow: hidden;
   pointer-events: none;
-}
+} */
+ .video-wall { 
+  position: absolute;
+   inset: 0;
+    display: grid; 
+    grid-template-columns: repeat(3, 33.33%); 
+    grid-template-rows: repeat(2, 50%);
+     overflow: hidden; 
+     z-index: 1; 
+    }
 
 .video-wall video {
   width: 100%;
