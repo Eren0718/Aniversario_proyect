@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Story ❤️ Geraldy</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: black;
+  color: white;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* 🎬 SCENES */
+.scene {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+.active { display: flex; }
+
+/* BACKGROUNDS */
+#scene1 { background: black; }
+#scene2 { background: linear-gradient(135deg,#ff758c,#ff7eb3); }
+#scene3 { background: radial-gradient(circle,#ff758c,#ff7eb3); }
+
+/* TEXT */
+h1 { font-size: 2.5em; }
+p {
+  max-width: 600px;
+  font-size: 1.2em;
+  line-height: 1.6;
+}
+
+/* BUTTON */
+button {
+  margin-top: 20px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1em;
+  background: white;
+  color: #ff4b5c;
+}
+
+/* 🎥 VIDEO WALL */
+.video-wall {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 33.33%);
+  grid-template-rows: repeat(2, 50%);
+  overflow: hidden;
+  z-index: 1;
+}
+.video-wall::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 2;
+}
+.video-wall video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  filter: brightness(0.8);
+}
+
+/* contenido */
+.content {
+  position: relative;
+  z-index: 3;
+}
+
+/* 🎞️ SLIDER */
+.slider {
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0.6;
+}
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+.track img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  margin-right: 15px;
+  border-radius: 18px;
+}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* FADE */
+.fade { animation: fadeIn 1.5s ease; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ❤️ HEARTS */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  animation: floatUp linear;
+}
+@keyframes floatUp {
+  to { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎬 ACT 1 -->
+<div id="scene1" class="scene active fade">
+  <div class="video-wall">
+    <video autoplay muted loop playsinline src="video1.mp4"></video>
+    <video autoplay muted loop playsinline src="video2.mp4"></video>
+    <video autoplay muted loop playsinline src="video3.mp4"></video>
+    <video autoplay muted loop playsinline src="video4.mp4"></video>
+    <video autoplay muted loop playsinline src="video5.mp4"></video>
+    <video autoplay muted loop playsinline src="video6.mp4"></video>
+  </div>
+
+  <div class="content">
+    <h1>🎬 ACT I — THE BEGINNING</h1>
+    <p>
+      Every story has a beginning…<br><br>
+      Ours started on 01/01/2026.<br><br>
+      These are the moments that started everything ❤️
+    </p>
+    <button onclick="nextScene(1)">Continue ▶️</button>
+  </div>
+</div>
+
+<!-- 🎬 ACT 2 -->
+<div id="scene2" class="scene fade">
+  <h1>❤️ ACT II — MEMORIES</h1>
+  <p id="text"></p>
+
+  <div class="slider">
+    <div class="track">
+      <img src="photo1.jpeg">
+      <img src="photo2.jpeg">
+      <img src="photo3.jpeg">
+      <img src="photo4.jpeg">
+      <img src="photo5.jpeg">
+      <img src="photo6.jpeg">
+      <img src="photo7.jpeg">
+      <img src="photo8.jpeg">
+      <img src="photo9.jpeg">
+      <img src="photo10.jpeg">
+      <img src="photo11.jpeg">
+      <img src="photo12.jpeg">
+      <img src="photo13.jpeg">
+      <img src="photo14.jpeg">
+      <img src="photo15.jpeg">
+      <img src="photo16.jpeg">
+      <img src="photo17.jpeg">
+
+
+      <!-- loop -->
+      <img src="photo18.jpeg">
+      <img src="photo19.jpeg">
+      <!--<img src="photo3.jpg">
+      <img src="photo4.jpg">-->
+    </div>
+  </div>
+
+  <button onclick="nextScene(2)">Final Act ▶️</button>
+</div>
+
+<!-- 🎬 ACT 3 -->
+<div id="scene3" class="scene fade">
+  <h1>🎬 FINAL ACT</h1>
+  <p>
+    💌 Happy Anniversary, Geraldy ❤️<br><br>
+
+    Thank you for every moment.<br>
+    For every laugh, every silence, every memory.<br><br>
+
+    You made life feel lighter.<br>
+    And for that, I’m grateful.<br><br>
+
+    If I could choose again…<br>
+    I would still choose you.<br><br>
+    Always ❤️
+  </p>
+</div>
+
+<!-- 🎵 AUDIO -->
+<audio id="music" loop preload="auto">
+  <source src="Drake - Yebbas Heartbreak (Audio).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("music");
+music.volume = 0;
+
+let musicStarted = false;
+
+// 🎬 Fade in
+function fadeInAudio(audio, duration = 3000) {
+  const steps = 50;
+  const stepTime = duration / steps;
+  let current = 0;
+
+  const fade = setInterval(() => {
+    current++;
+    audio.volume = Math.min(current / steps, 1);
+    if (current >= steps) clearInterval(fade);
+  }, stepTime);
+}
+
+// 🔊 Intentar iniciar música
+function startMusic() {
+  if (musicStarted) return;
+
+  music.play().then(() => {
+    fadeInAudio(music, 3000);
+    musicStarted = true;
+  }).catch(() => {});
+}
+
+// 📱 TODAS las interacciones posibles
+["click","touchstart","pointerdown","keydown","scroll"].forEach(evt => {
+  document.addEventListener(evt, startMusic, { once: true });
+});
+
+// 🎬 ESCENAS
+function nextScene(n) {
+  document.getElementById("scene" + n).classList.remove("active");
+  document.getElementById("scene" + (n + 1)).classList.add("active");
+
+  if (n === 1) typeWriter();
+  if (n === 2) startHearts();
+}
+
+// ✍️ TYPEWRITER
+const msg = `My love...
+
+Every moment with you became a memory.
+
+You are my peace.
+My happiness.
+My home.
+
+And I will always choose you ❤️`;
+
+let i = 0;
+function typeWriter() {
+  const el = document.getElementById("text");
+  if (i < msg.length) {
+    el.innerHTML += msg.charAt(i);
+    i++;
+    setTimeout(typeWriter, 35);
+  }
+}
+
+// ❤️ HEARTS
+function startHearts() {
+  setInterval(() => {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤️";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.fontSize = (Math.random() * 18 + 10) + "px";
+    h.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 5000);
+  }, 250);
+}
+</script>
+
+</body>
+</html>
