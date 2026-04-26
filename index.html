@@ -50,45 +50,31 @@ button {
   font-size: 1em;
   background: white;
   color: #ff4b5c;
-  z-index: 3;
 }
 
 /* 🎥 VIDEO WALL */
-/* .video-wall {
+.video-wall {
   position: absolute;
   inset: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 33.33%);
+  grid-template-rows: repeat(2, 50%);
   overflow: hidden;
-  pointer-events: none;
-} */
- .video-wall { 
+  z-index: 1;
+}
+.video-wall::after {
+  content: "";
   position: absolute;
-   inset: 0;
-    display: grid; 
-    grid-template-columns: repeat(3, 33.33%); 
-    grid-template-rows: repeat(2, 50%);
-     overflow: hidden; 
-     z-index: 1; 
-    }
-
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 2;
+}
 .video-wall video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0.6;
   filter: brightness(0.8);
-  will-change: transform;
-  transform: translateZ(0);
-}
-
-/* overlay cine */
-.video-wall::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
 }
 
 /* contenido */
@@ -103,20 +89,19 @@ button {
   bottom: 10%;
   width: 100%;
   overflow: hidden;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 .track {
   display: flex;
   width: max-content;
-  animation: scroll 40s linear infinite;
+  animation: scroll 30s linear infinite;
 }
 .track img {
-  width: 240px;
-  height: 240px;
+  width: 220px;
+  height: 220px;
   object-fit: cover;
   margin-right: 15px;
   border-radius: 18px;
-  loading: lazy;
 }
 @keyframes scroll {
   0% { transform: translateX(0); }
@@ -139,27 +124,6 @@ button {
 @keyframes floatUp {
   to { transform: translateY(-100vh); opacity: 0; }
 }
-
-/* 📱 MOBILE ULTRA OPTIMIZATION */
-@media (max-width: 768px) {
-
-  .video-wall {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-  }
-
-  .video-wall video {
-    animation: none !important;
-    opacity: 0.6;
-  }
-
-  .track {
-    animation-duration: 55s;
-  }
-
-  h1 { font-size: 1.8em; }
-  p { font-size: 1em; }
-}
 </style>
 </head>
 
@@ -168,14 +132,12 @@ button {
 <!-- 🎬 ACT 1 -->
 <div id="scene1" class="scene active fade">
   <div class="video-wall">
-
-    <video preload="metadata" muted loop playsinline src="video1.mp4"></video>
-    <video preload="metadata" muted loop playsinline src="video2.mp4"></video>
-    <video preload="metadata" muted loop playsinline src="video3.mp4"></video>
-    <video preload="metadata" muted loop playsinline src="video4.mp4"></video>
-    <video preload="metadata" muted loop playsinline src="video5.mp4"></video>
-    <video preload="metadata" muted loop playsinline src="video6.mp4"></video>
-
+    <video autoplay muted loop playsinline src="video1.mp4"></video>
+    <video autoplay muted loop playsinline src="video2.mp4"></video>
+    <video autoplay muted loop playsinline src="video3.mp4"></video>
+    <video autoplay muted loop playsinline src="video4.mp4"></video>
+    <video autoplay muted loop playsinline src="video5.mp4"></video>
+    <video autoplay muted loop playsinline src="video6.mp4"></video>
   </div>
 
   <div class="content">
@@ -196,25 +158,30 @@ button {
 
   <div class="slider">
     <div class="track">
-      <img loading="lazy" src="photo1.jpeg">
-      <img loading="lazy" src="photo2.jpeg">
-      <img loading="lazy" src="photo3.jpeg">
-      <img loading="lazy" src="photo4.jpeg">
-      <img loading="lazy" src="photo5.jpeg">
-      <img loading="lazy" src="photo6.jpeg">
-      <img loading="lazy" src="photo7.jpeg">
-      <img loading="lazy" src="photo8.jpeg">
-      <img loading="lazy" src="photo9.jpeg">
-      <img loading="lazy" src="photo10.jpeg">
-      <img loading="lazy" src="photo11.jpeg">
-      <img loading="lazy" src="photo12.jpeg">
-      <img loading="lazy" src="photo13.jpeg">
-      <img loading="lazy" src="photo14.jpeg">
-      <img loading="lazy" src="photo15.jpeg">
-      <img loading="lazy" src="photo16.jpeg">
-      <img loading="lazy" src="photo17.jpeg">
-      <img loading="lazy" src="photo18.jpeg">
-      <img loading="lazy" src="photo19.jpeg">
+      <img src="photo1.jpeg">
+      <img src="photo2.jpeg">
+      <img src="photo3.jpeg">
+      <img src="photo4.jpeg">
+      <img src="photo5.jpeg">
+      <img src="photo6.jpeg">
+      <img src="photo7.jpeg">
+      <img src="photo8.jpeg">
+      <img src="photo9.jpeg">
+      <img src="photo10.jpeg">
+      <img src="photo11.jpeg">
+      <img src="photo12.jpeg">
+      <img src="photo13.jpeg">
+      <img src="photo14.jpeg">
+      <img src="photo15.jpeg">
+      <img src="photo16.jpeg">
+      <img src="photo17.jpeg">
+
+
+      <!-- loop -->
+      <img src="photo18.jpeg">
+      <img src="photo19.jpeg">
+      <!--<img src="photo3.jpg">
+      <img src="photo4.jpg">-->
     </div>
   </div>
 
@@ -225,15 +192,19 @@ button {
 <div id="scene3" class="scene fade">
   <h1>🎬 FINAL ACT</h1>
   <p>
-    💌 Happy Anniversary, Geraldy ❤️<br><br>
+     💌 Happy Anniversary, Geraldy ❤️<br><br>
+
     Thank you for every moment.<br>
     For every laugh, every silence, every memory.<br><br>
+
     You made life feel lighter.<br>
     And for that, I’m grateful.<br><br>
+
     If I could choose again…<br>
     I would still choose you.<br><br>
     Always ❤️
   </p>
+  <!-- <h2 style="margin-top:20px;">♥ tomatico — END CREDITS ♥</h2> -->
 </div>
 
 <!-- 🎵 AUDIO -->
@@ -242,34 +213,40 @@ button {
 </audio>
 
 <script>
-
-/* 🎧 AUDIO CONTROL */
 const music = document.getElementById("music");
 music.volume = 0;
+
 let musicStarted = false;
 
+// 🎬 Fade in
 function fadeInAudio(audio, duration = 3000) {
-  let step = 0;
-  const interval = setInterval(() => {
-    step++;
-    audio.volume = Math.min(step / 50, 1);
-    if (step >= 50) clearInterval(interval);
-  }, duration / 50);
+  const steps = 50;
+  const stepTime = duration / steps;
+  let current = 0;
+
+  const fade = setInterval(() => {
+    current++;
+    audio.volume = Math.min(current / steps, 1);
+    if (current >= steps) clearInterval(fade);
+  }, stepTime);
 }
 
+// 🔊 Intentar iniciar música
 function startMusic() {
   if (musicStarted) return;
+
   music.play().then(() => {
-    fadeInAudio(music);
+    fadeInAudio(music, 3000);
     musicStarted = true;
-  }).catch(()=>{});
+  }).catch(() => {});
 }
 
-["click","touchstart","pointerdown","keydown"].forEach(evt => {
+// 📱 TODAS las interacciones posibles
+["click","touchstart","pointerdown","keydown","scroll"].forEach(evt => {
   document.addEventListener(evt, startMusic, { once: true });
 });
 
-/* 🎬 ESCENAS */
+// 🎬 ESCENAS
 function nextScene(n) {
   document.getElementById("scene" + n).classList.remove("active");
   document.getElementById("scene" + (n + 1)).classList.add("active");
@@ -278,7 +255,7 @@ function nextScene(n) {
   if (n === 2) startHearts();
 }
 
-/* ✍️ TYPEWRITER */
+// ✍️ TYPEWRITER
 const msg = `My love...
 
 Every moment with you became a memory.
@@ -295,11 +272,11 @@ function typeWriter() {
   if (i < msg.length) {
     el.innerHTML += msg.charAt(i);
     i++;
-    setTimeout(typeWriter, 30);
+    setTimeout(typeWriter, 35);
   }
 }
 
-/* ❤️ HEARTS */
+// ❤️ HEARTS
 function startHearts() {
   setInterval(() => {
     const h = document.createElement("div");
@@ -310,44 +287,8 @@ function startHearts() {
     h.style.animationDuration = (Math.random() * 3 + 2) + "s";
     document.body.appendChild(h);
     setTimeout(() => h.remove(), 5000);
-  }, 300);
+  }, 250);
 }
-
-/* 🚀 ULTRA OPTIMIZACIÓN */
-const isMobile = window.innerWidth <= 768;
-const videos = document.querySelectorAll("video");
-
-videos.forEach(video => {
-
-  // 📱 SOLO aplicar optimización agresiva en móvil
-  if (isMobile) {
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          video.play().catch(()=>{});
-        } else {
-          video.pause();
-        }
-      });
-    });
-
-    observer.observe(video);
-
-    video.playbackRate = 0.85;
-
-  } else {
-    // 💻 desktop → todos activos siempre
-    video.play().catch(()=>{});
-  }
-
-});
-
-/* 🧠 dispositivo débil */
-if (navigator.hardwareConcurrency <= 4) {
-  videos.forEach(v => v.style.filter = "brightness(0.6)");
-}
-
 </script>
 
 </body>
