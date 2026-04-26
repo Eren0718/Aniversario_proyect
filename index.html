@@ -310,21 +310,26 @@ const videos = document.querySelectorAll("video");
 
 videos.forEach(video => {
 
-  // ▶️ reproducir solo cuando visible
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        video.play().catch(()=>{});
-      } else {
-        video.pause();
-      }
-    });
-  });
-  observer.observe(video);
-
-  // 📱 optimización móvil
+  // 📱 SOLO aplicar optimización agresiva en móvil
   if (isMobile) {
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          video.play().catch(()=>{});
+        } else {
+          video.pause();
+        }
+      });
+    });
+
+    observer.observe(video);
+
     video.playbackRate = 0.85;
+
+  } else {
+    // 💻 desktop → todos activos siempre
+    video.play().catch(()=>{});
   }
 
 });
