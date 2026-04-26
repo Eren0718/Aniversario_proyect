@@ -313,6 +313,16 @@ function startHearts() {
     setTimeout(() => h.remove(), 5000);
   }, 250);
 }
+
+
+const videos = document.querySelectorAll("video");
+
+if (navigator.hardwareConcurrency <= 4) {
+  videos.forEach(v => {
+    v.playbackRate = 0.9; // menos carga
+  });
+}
+
 </script>
 
 </body>
